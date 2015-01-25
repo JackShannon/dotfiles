@@ -1,12 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-let $MYVIMRC='~/Documents/Projects/dotfiles/vimrc'
-
 " set the runtime path to include Vundle and initialize
-set rtp+=~/Vim/vimfiles/bundle/Vundle.vim/
-let path='~/Vim/vimfiles/bundle'
-call vundle#begin(path)
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -16,9 +13,6 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'tpope/vim-sensible'
-
-"Plugin 'ervandew/supertab'
-"Plugin 'scrooloose/syntastic'
 
 "Plugin 'rking/ag.vim'
 
@@ -62,9 +56,10 @@ set hlsearch
 colorscheme solarized
 set background=dark
 
-" Mouse enabled for normal and visual mode only
+" Mouse enabled
 if has('mouse')
-  set mouse=nv
+  set mouse=a
+  set ttymouse=xterm2
 endif
 
 " Leader is comma
@@ -83,12 +78,6 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Disable hjkl keys
-"noremap k <NOP>
-"noremap j <NOP>
-"noremap h <NOP>
-"noremap l <NOP>
-
 set history=5000
 set hidden
 set noswapfile
@@ -99,11 +88,5 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 "let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-set statusline=
-set statusline+=%f\ %2*%m\ %1*%h
-set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%{fugitive#statusline()}
-set statusline+=%*
-set statusline+=%r%=[%{&encoding}\ %{&fileformat}\ %{strlen(&ft)?&ft:'none'}]\ %12.(%c:%l/%L%)
-set laststatus=2
+set statusline=[%n]\ %f\ %h%w%m%r%=%-10(%l,%c%)\%P
+set laststatus=2 " Always show statusline
